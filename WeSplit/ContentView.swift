@@ -17,26 +17,37 @@ struct ContentView: View {
     var body: some View{
         NavigationStack{
             Form{
+                
                 Section{
                     TextField("Bill Amount", value: $checkAmount, format: .currency(code: Locale.current.currency?.identifier ?? "USD"))
                         .keyboardType(.decimalPad)
                     
                     
                 }
+                
                 Section{
-                    TextField("Tip Selected", value: $tipAmount , format: .currency(code: Locale.current.currency?.identifier ?? "USD"))
-                        .keyboardType(.decimalPad)
+//                    TextField("Tip Selected", value: $tipAmount , format: .currency(code: Locale.current.currency?.identifier ?? "USD"))
+//                        .keyboardType(.decimalPad)
+                    Picker("Tip Selected", selection: tipPercantages){
+                        ForEach(tipPercantages, id:\.self){
+                            Text()
+                        }
+                    }
                 }
                 
-                Picker("No of People", selection: $noOfPeople){
+                Picker("No Of People", selection: $noOfPeople){
                     ForEach(0..<100){
                         Text("\($0) People")
                     }
                 }
                 
+                Section{
+                    
+                }
            
             }
             .navigationTitle("We Split")
+            
         }
     }
 }
